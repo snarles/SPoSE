@@ -129,6 +129,7 @@ def run(
     #load triplets into memory
     train_triplets, test_triplets = utils.load_data(device=device, triplets_dir=triplets_dir)
     n_items = utils.get_nitems(train_triplets)
+    n_train = len(train_triplets)
     #load train and test mini-batches
     train_batches, val_batches = utils.load_batches(
                                                       train_triplets=train_triplets,
@@ -236,7 +237,7 @@ def run(
             l1_pen = l1_regularization(model).to(device) #L1-norm to enforce sparsity (many 0s)
             W = model.fc.weight
             pos_pen = torch.sum(F.relu(-W)) #positivity constraint to enforce non-negative values in embedding matrix
-            complexity_loss = (lmbda/n_items) * l1_pen
+            complexity_loss = (lmbda/n_train) * l1_pen
             loss = c_entropy + 0.01 * pos_pen + complexity_loss
             loss.backward()
             optim.step()
