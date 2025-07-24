@@ -15,7 +15,7 @@
  --results_dir (optional specification of results directory (if not provided will resort to ./results/modality/version/dim/lambda/seed/))
  --plots_dir (optional specification of directory for plots (if not provided will resort to ./plots/modality/version/dim/lambda/seed/)
  --learning_rate (learning rate to be used in optimizer)
- --lmbda (lambda value determines l1-norm fraction to regularize loss; will be divided by number of items in the original data matrix)
+ --lmbda (lambda value determines l1-norm fraction to regularize loss; will be divided by number of triplets in the training set)
  --embed_dim (embedding dimensionality, i.e., output size of the neural network)
  --batch_size (batch size)
  --epochs (maximum number of epochs to optimize SPoSE model for)
